@@ -10,7 +10,11 @@
   <param name="desc_unit" type="description">Eurorack Panel maker:</param>
   <param name="desc_unit" type="description">Width is in HP (Horizontal Pitch)</param>
   <param name="desc_unit" type="description"> (Panels are usually defined in units of 2)</param>
-  <param name="hp" type="int" min="2" max="64" _gui-text="HP">6</param>
+  <param name="hp" type="int" min="2" max="84" _gui-text="HP">6</param>
+  <param name="height" type="enum" gui-text="Panel height">
+    <item value="128.5">3U</item>
+	<item value="36.95">1U</item>
+  </param>
   <param name="symmetrical" type="boolean" _gui-text="Symmetrical Offset">false</param>
   <param name="desc_unit" type="description">If Symmetrical then holes are 7.5mm from either side.</param>
   <param name="desc_unit" type="description">Otherwise Offset cuts in from RHS.</param>

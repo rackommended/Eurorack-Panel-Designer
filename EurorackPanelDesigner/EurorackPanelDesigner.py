@@ -2,9 +2,10 @@
 # 
 # Eurorack Panel Designer by THX2112
 #
-# v4
+# v5
 # - reference: http://www.doepfer.de/a100_man/a100m_e.htm
 # Adds lasercutting color and refactoring
+# Add 1U panel height
 
 import sys
 import math
@@ -29,6 +30,7 @@ class EurorackPanelEffect(inkex.Effect):
         self.OptionParser.add_option('-v', '--oval', action='store', type='inkbool', dest='oval', default='False', help='Oval holes?')
         self.OptionParser.add_option('-c', '--centers', action='store', type='inkbool', dest='centers', default='False', help='Mark centers?')
         self.OptionParser.add_option('-l', '--lasercut', action='store', type='inkbool', dest='lasercut', default='False', help='Lasercut style?')
+        self.OptionParser.add_option('-e', '--height', action='store', type='float', dest='height', default='128.5', help='Panel height?')
 
     def draw_SVG_Panel(self, (w,h), (x,y), (rx,ry), parent):
         " Draw the Basic Panel Shape"
@@ -128,7 +130,7 @@ class EurorackPanelEffect(inkex.Effect):
         unitfactor = self.unittouu('1mm') # all our dimensions are in mm
 
         # Dimensions
-        height = 128.5
+        height = self.options.height
         if symmetrical: 
             width = 7.5 + ((hp - 3) * 5.08) + 7.5
         else:
@@ -150,7 +152,7 @@ class EurorackPanelEffect(inkex.Effect):
 
         # Draw Holes
         TopHoles = 3.0
-        BottomHoles = 125.5
+        BottomHoles = height - 3.0 #125.5
         LeftHoles = 7.5
         RightHoles = ((hp - 3.0) * 5.08) + 7.5
         HoleRadius = 1.6
